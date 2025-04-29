@@ -1,1 +1,10 @@
-1 2 - 4 5 - 7 8 - 10 11 12 - 14 15 - 17 18 - 20 21 22 - 24 25 - 27 28 - - - - -- - - -- - - -- 40 41 42 - 44 45 - 47 48 - 50 51 52 - 54 55 - 57 58 - - - - -- - - -- - - -- 70 71 72 - 74 75 - 77 78 - 80 81 82 - 84 85 - 87 88 - - - - -- - - -- - - -- 100
+#1 Life itself is a quotation.
+#2 Suspicion follows close on mistrust.
+#3 To doubt is safer than to be secure.
+#4 Only the just man enjoys peace of mind.
+#5 A full belly is the mother of all evil.
+#6 A gift in season is a double favor to the needy.
+#7 Books are ships which pass through the vast seas of time.
+#8 Let thy speech be short, comprehending much in few words.
+#9 The world is a beautiful book, but of little use to him who cannot read it.
+#10 He who spares the rod hates his son, but he who loves him is careful to discipline him.
