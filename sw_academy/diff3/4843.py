@@ -8,7 +8,7 @@ for test_case in range(1, T + 1):
     array.sort(reverse=True)
     i = 0
     result = []
-    for j in range(len(array)):
+    for j in range(10):
         if j%2 == 0:
             result.append(array[i])
             i +=1
