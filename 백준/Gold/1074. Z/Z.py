@@ -9,16 +9,24 @@ def z(size:int, x:int, y:int, c, r):
             print(count)
         else:
             count+=1
-    elif x+size<c or y+size<r:
-            count += size * size
-    elif c<x and r<y:
+
+    elif r < y:
          return
+
+    elif y <= r and r < (y + size):
+        if c < x:
+              return
+        elif c < x+size:
+            n = size//2
+            z(n, x, y, c,r)
+            z(n, x+n, y, c,r)
+            z(n, x, y+n, c,r)
+            z(n, x+n, y+n, c,r)
+        else:
+             count += size * size
     else:
-        n = size//2
-        z(n, x, y, c,r)
-        z(n, x+n, y, c,r)
-        z(n, x, y+n, c,r)
-        z(n, x+n, y+n, c,r)
+        count += size * size
+        
 
 N,r,c = map(int,sys.stdin.readline().split())
 
