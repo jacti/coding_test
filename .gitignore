@@ -40,7 +40,8 @@ $RECYCLE.BIN/
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon[]
+Icon[
+]
 
 # Thumbnails
 ._*
@@ -321,3 +322,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+#cph
+.cph/

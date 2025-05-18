@@ -56,7 +56,7 @@ for num in inputList:
     #     i += 1
     # print(f"{a} {b}")
 
-    # # //TRY 2 : 
+    # # //TRY 2 : pass
     # # num/2 부터 조회 양옆으로 조회
     half = num//2
 
