@@ -1,6 +1,10 @@
 import sys
-# sys.stdin = open("input.txt", "r")
+sys.path.append("/Users/jactio/develop/coding_test/function_visualizer")
+sys.stdin = open("input.txt", "r")
 
+from function_visualizer import FunctionVisualizer
+
+visualizer = FunctionVisualizer()
 
 N = int(sys.stdin.readline())
 
@@ -8,6 +12,7 @@ graph = []
 for _ in range(N):
     graph.append(list(map(int,sys.stdin.readline().split())))
 
+@visualizer.visualize(param_names=["cur","n"],show_execution_order=True)
 def TSP(cur:int,n:int,prefix_sum:int,visited:list[bool]):
     global graph
     if n ==0:
@@ -28,3 +33,5 @@ def TSP(cur:int,n:int,prefix_sum:int,visited:list[bool]):
 visited = [False]*N
 visited[0] = True
 print(TSP(0,N-1,0,visited))
+
+visualizer.render("TSP2_4","png")

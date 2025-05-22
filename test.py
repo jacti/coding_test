@@ -1,10 +1,6 @@
-def recur(n: int) -> int:
-
-    while n >0:
-        recur(n-1)
-        print(n)
-        n = n-2
-
-x = int(input('정숫값을 입력하세요.: '))
-
-recur(x)
+coins = [1,2,3] 
+def counting_change(value,arr):
+    global coins
+    if value == 0:
+        return 
+    
