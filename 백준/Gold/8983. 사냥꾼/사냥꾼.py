@@ -1,5 +1,5 @@
 from sys import stdin
-
+from bisect import bisect_left
 # stdin = open("input.txt","r")
 
 input = stdin.readline
@@ -15,23 +15,19 @@ for _ in range(N):
     if target[1] <= L:
         targets.append(target)
 
-targets.sort(key=lambda x: x[0])
 
 hunter_pos = 0
-target_pos = 0
 count = 0
 
 for x,y in targets :
-    if y > L :
-        continue
-
-    Minpossiblehunt = x - (L - y)
-    Maxpossiblehunt = x + (L - y)
-
-    while hunter_pos < M and hunters[hunter_pos] < Minpossiblehunt:
-        hunter_pos += 1
-
-    if hunter_pos < M and hunters[hunter_pos] <= Maxpossiblehunt:
-        count += 1
+    i = bisect_left(hunters,x)
+    if i ==0:
+        dx = hunters[i] - x
+    elif i == M:
+        dx = x - hunters[M-1]
+    else:
+        dx = min((hunters[i] - x),(x-hunters[i-1]))
+    if dx+y <= L:
+        count +=1
 
 print(count)
