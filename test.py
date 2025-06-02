@@ -1,6 +1,3 @@
-coins = [1,2,3] 
-def counting_change(value,arr):
-    global coins
-    if value == 0:
-        return 
-    
+a = { v:i+1 for i,v in enumerate(['a','b','c'])}
+b = "asdf"
+print( 'a' not in b)
