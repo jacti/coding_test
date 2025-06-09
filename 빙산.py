@@ -40,6 +40,7 @@ def check_group(cur_bergs:list[list[int]], new_bergs:list[list[int]], check_map:
 N, M = map(int,input().split())
 
 berg = [list(map(int,input().split())) for _ in range(N)]
+group = []
 
 time = 0
 start_point = (0,0)
