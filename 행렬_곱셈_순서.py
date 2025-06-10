@@ -1,21 +1,27 @@
 from sys import stdin
+# stdin = open("input.txt","r")
 input = stdin.readline
 
 N = int(input())
-matrixs = [tuple(map(int, input().split())) for _ in range(N)]
-
-dp = [[float('inf')]*N for _ in range(N)]
+matrix = []
+sorted_matrix = []
 for i in range(N):
-    dp[i][i] = 0
+    matrix.append(tuple(map(int,input().split())))
+    sorted_matrix.append((matrix[-1][0],i))
 
-for combine in range(1,N):
-    for start in range(0,N-combine):
-        end = start + combine
-        for i in range(start,end):
-            count = dp[start][i] + dp[i+1][end] + matrixs[start][0]*matrixs[i][1]*matrixs[end][1]
-            if count < dp[start][end]:
-                dp[start][end] = count
+sorted_matrix.sort(key=lambda x: x[0],reverse=True)
 
-print(dp[0][N-1])
+dp_start = [x for x in range(N)]
+dp_end = [x for x in range(N)]
+
+count = 0
+for _, i in sorted_matrix:
+    if i == 0:
+        continue
+    count += matrix[dp_start[i-1]][0] * matrix[i][0] * matrix[dp_end[i]][1]
+    dp_start[i] = dp_start[i-1]
+    dp_end[i-1] = dp_end[i]
+
+print(count)
             
 
