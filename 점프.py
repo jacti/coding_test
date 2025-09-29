@@ -1,30 +1,35 @@
-from sys import stdin
-from collections import deque
-# stdin = open("input.txt","r")
+from sys import stdin,setrecursionlimit
+setrecursionlimit(100000)
 input = stdin.readline
 
-N, M = map(int,input().split())
-dp = [[float('inf')]*(N+1) for _ in range(150)]
-impossible = {int(input()) for _ in range(M)}
+N = int(input())
 
-if 2 in impossible:
-    print(-1)
-else:
-    q = deque([(2,1,1)])
-    dp[1][2] = 1
-    while q:
-        current, speed, count = q.pop()
-        if current == N:
-            print(count)
-            break
-        else:
-            for new_speed in range(speed-1,speed+2):
-                new_current = current + new_speed
-                new_count = count+1
-                if new_speed<=0 or new_current > N or new_count >= dp[new_speed][new_current] or new_current in impossible:
-                    continue
-                else:
-                    dp[new_speed][new_current] = new_count
-                    q.appendleft((new_current,new_speed,new_count))
-    else:
-        print(-1)
+board = [list(map(int,input().split())) for _ in range(N)]
+
+# dp[y][x] == y,x에서 목적지로 갈 수 있는 경우의 수
+# dp[y][x] = dp[y+jump][x] + dp[y][x+jump]
+dp = [[0]*N for _ in range(N)]
+visited = [[False]*N for _ in range(N)]
+
+def dfs(y,x):
+    global N
+    global board
+    global dp
+    global count
+    global visited
+
+    if visited[y][x]:
+        return dp[y][x]
+    visited[y][x] = True
+    # 점프할 거리
+    jump = board[y][x]
+    # 보드 안에서 점프가 가능할 때
+    for new_y, new_x in ((y+jump,x),(y,x+jump)):
+        # 목적지에 도착하면 dp +1
+        if new_x == N-1 and new_y == N-1:
+            dp[y][x] +=1
+        elif 0<=new_y<N and 0<=new_x<N:
+            dp[y][x] += dfs(new_y,new_x)
+    return dp[y][x]
+    
+print(dfs(0,0))
